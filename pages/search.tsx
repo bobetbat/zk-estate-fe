@@ -58,7 +58,7 @@ const Search: NextPage = () => {
                   title={apartment.title}
                   description={apartment.description}
                   imageUrls={apartment.imageUrls}
-                  handleDetail={() => router.push(`/contract/${apartment.contract.address}`)}
+                  handleDetail={() => router.push(`/apartment/${apartment.contract.address}`)}
                 />
               </Grid>
             ))}
