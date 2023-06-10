@@ -10,24 +10,27 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, goerli, mainnet, optimism, polygon } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
-import { chiadoGnosisTestnet } from '../config/chains';
+import { chiadoGnosisTestnet, mantleTestnet, scrollAlfaTestnet } from '../config/chains';
 import { store } from '../store'
 import theme from '../styles/theme';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
+    goerli,
+    mantleTestnet,
+    scrollAlfaTestnet,
     mainnet,
     polygon,
     optimism,
     arbitrum,
     chiadoGnosisTestnet,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    // ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'ZK Estate',
+  appName: 'ZKEstate',
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   chains,
 });
@@ -39,7 +42,7 @@ const wagmiConfig = createConfig({
   webSocketPublicClient,
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <Provider store={store}>
@@ -56,4 +59,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default App;
