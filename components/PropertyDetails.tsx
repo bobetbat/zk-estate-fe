@@ -8,6 +8,7 @@ import {
   Box,
   ImageList,
   ImageListItem,
+  Stack,
 } from '@mui/material';
 // import logo from "./../logo.svg";
 
@@ -93,22 +94,24 @@ const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, handleCollateralL
                 </ImageListItem>
               ))}
             </ImageList>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ margin: 1 }}
-              onClick={handlePrevImage}
-            >
-              Prev
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ margin: 1 }}
-              onClick={handleNextImage}
-            >
-              Next
-            </Button>
+            <Stack direction='row' justifyContent='space-between'>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ margin: 1 }}
+                onClick={handlePrevImage}
+              >
+                Prev
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ margin: 1 }}
+                onClick={handleNextImage}
+              >
+                Next
+              </Button>
+            </Stack>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h4" gutterBottom>

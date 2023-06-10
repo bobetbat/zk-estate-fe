@@ -6,6 +6,7 @@ import { incrementByAmount } from '../../store/reducers/counter';
 // import { useParams } from 'react-router-dom';
 import { Box, Button, ListItem, ListItemText, Paper } from '@mui/material';
 import { useRouter } from 'next/router';
+import { ProgressBar } from '../../components/ProgressBar';
 
 
 const Contract: React.FC = () => {
@@ -21,8 +22,9 @@ const Contract: React.FC = () => {
   console.log('slug', router.query.slug)
   return (
     <Layout header footer>
-      <Box sx={{ flexGrow: 1, padding: 2 }}>
-        <Paper sx={{ p: 2, maxWidth: 800, margin: 'auto' }}>
+      <Box sx={{ flexGrow: 1, padding: 2, }}>
+        <ProgressBar />
+        <Paper sx={{ p: 2, marginTop: 4 }}>
           {counter > 0 ? <ListItem>
             <ListItemText primary={'Candidate'} />
             <Button onClick={handleApprove} variant='contained' color='primary'>Approve</Button>
