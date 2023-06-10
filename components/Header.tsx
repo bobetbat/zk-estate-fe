@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
           disableGutters
           sx={{ justifyContent: 'space-between', px: '1rem' }}
         >
-          <Button>
+          <Button onClick={() => router.push('/')}>
             <Image
               src="/logo.svg"
               width={50}
