@@ -76,27 +76,27 @@ export const scrollAlfaTestnet: Chain = {
   }
 }
 
-// export const OptimismTestnet: Chain = {
-//   id: 420,
-//   name: 'Optimism Testnet',
-//   network: '',
-//   nativeCurrency: {
-//     name: 'ETH',
-//     symbol: 'ETH',
-//     decimals: 18
-//   },
-//   rpcUrls: {
-//     default: {
-//       http: ['https://goerli.optimism.io']
-//     },
-//     public: {
-//       http: ['https://goerli.optimism.io']
-//     }
-//   },
-//   blockExplorers: {
-//     default: {
-//       name: 'blockscout',
-//       url: 'https://blockscout.scroll.io/'
-//     }
-//   }
-// }
+export const taikoTestnet: Chain = {
+  id: 167005,
+  name: 'Taiko',
+  network: '',
+  nativeCurrency: {
+    name: 'ETH',
+    symbol: 'ETH',
+    decimals: 18
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.test.taiko.xyz']
+    },
+    public: {
+      http: ['https://rpc.test.taiko.xyz']
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'blockscout',
+      url: 'https://explorer.test.taiko.xyz'
+    }
+  }
+}

@@ -36,6 +36,12 @@ export const contracts: TContracts = {
     estate: '0xFe8Fa89D8D861971F5E9061B3Cb90fcaE270338F',
     rent: '0x'//
   },
+  167005: {
+    name: 'taikoTestnet',
+    estate: '0xbefC6F3B404F2BF6B4c52E05c55BE15ee3Fe294d',
+    rent: '0x'//
+  },
+  
 }
 
 // getNumberOfProperties function config

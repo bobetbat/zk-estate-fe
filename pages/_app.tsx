@@ -10,7 +10,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, goerli, mainnet, optimism, polygon, optimismGoerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
-import { chiadoGnosisTestnet, mantleTestnet, scrollAlfaTestnet } from '../config/chains';
+import { chiadoGnosisTestnet, mantleTestnet, scrollAlfaTestnet, taikoTestnet } from '../config/chains';
 import { store } from '../store'
 import theme from '../styles/theme';
 
@@ -21,6 +21,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     scrollAlfaTestnet,
     optimismGoerli,
     chiadoGnosisTestnet,
+    taikoTestnet
     // mainnet,
     // polygon,
     // optimism,
