@@ -22,6 +22,7 @@ const Home: NextPage = () => {
       <Layout header footer>
         <Container>
           <Typography variant="h3" textAlign='center'>Welcome to Web3 renting platform</Typography>
+          <Typography variant="h6" textAlign='center'>dapp supports Optimism only(for now)</Typography>
           <Stack mt='2rem' gap={1} direction='row' justifyContent='space-evenly'>
             <Button size='large' variant='contained' onClick={() => router.push('/search?location=Prague')}>Find home</Button>
             <Button size='large' variant='contained' onClick={() => router.push('/landlord')}>List apartment</Button>
