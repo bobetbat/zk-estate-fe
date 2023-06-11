@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { emphasize, styled } from '@mui/material/styles';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
 // import HomeIcon from '@mui/icons-material/Home';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   const backgroundColor =
@@ -29,6 +29,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 
 export const ProgressBar = () => {
   const router = useRouter();
+  const stage = useMemo(() => router.query.stage, [router.query.stage])
 
   const handleClick = (value: string) => {
     router.push(`${router.query.slug}?stage=${value}`, undefined, { shallow: true })
@@ -41,23 +42,26 @@ export const ProgressBar = () => {
           component="a"
           onClick={(e) => handleClick('1')}
           label="Applied tenants"
-          variant={router.query.stage == '1' ? 'outlined' : 'filled'}
-          disabled={false}
+          variant={stage == '1' || stage == undefined ? 'outlined' : 'filled'}
+          disabled={stage !== '1' && stage !== undefined}
         />
         <StyledBreadcrumb
           onClick={(e) => handleClick('2')}
-          variant={router.query.stage == '2' ? 'outlined' : 'filled'}
+          variant={stage == '2' ? 'outlined' : 'filled'}
+          disabled={stage !== '2'}
           component="a"
           label="Contract Start" />
         <StyledBreadcrumb
           label="Contract Progress"
           component="a"
           onClick={(e) => handleClick('3')}
-          variant={router.query.stage == '3' ? 'outlined' : 'filled'}
+          disabled={stage !== '3'}
+          variant={stage == '3' ? 'outlined' : 'filled'}
         />
         <StyledBreadcrumb
           onClick={(e) => handleClick('4')}
-          variant={router.query.stage == '4' ? 'outlined' : 'filled'}
+          disabled={stage !== '4'}
+          variant={stage == '4' ? 'outlined' : 'filled'}
           component="a"
           label="Contract End"
         />

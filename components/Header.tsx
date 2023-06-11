@@ -14,12 +14,12 @@ export const Header: React.FC = () => {
       <Box maxWidth="xl">
         <Toolbar
           disableGutters
-          sx={{ justifyContent: 'space-between', px: '1rem' }}
+          sx={{ justifyContent: 'space-between', px: '1rem', py: '0.5rem' }}
         >
           <Button onClick={() => router.push('/')}>
             <Image
-              src="/logo.svg"
-              width={50}
+              src="/logo-full.svg"
+              width={130}
               height={50}
               alt="logo"
             />

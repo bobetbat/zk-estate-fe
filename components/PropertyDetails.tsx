@@ -63,7 +63,7 @@ const AmenitiesWrapper = styled('div')({
 
 const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, handleCollateralLock }) => {
   const [imageIndex, setImageIndex] = useState(0);
-
+  console.log(propertyDetail)
   const handleNextImage = () => {
     setImageIndex((prevIndex) =>
       prevIndex < propertyDetail.images.length - 1 ? prevIndex + 1 : 0
@@ -85,7 +85,7 @@ const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, handleCollateralL
               {propertyDetail.images.map((image, index) => (
                 <ImageListItem key={index}>
                   <Image
-                    src="/logo.svg"
+                    src={image}
                     alt={propertyDetail.title}
                     style={{
                       display: index === imageIndex ? 'block' : 'none',
