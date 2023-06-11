@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from '@mui/material';
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from '@mui/material';
 interface Options {
   [key: string]: string[];
 }
@@ -22,11 +22,11 @@ const FilterCheckboxes: React.FC<FilterCheckboxesProps> = ({ searchParams, optio
       onChange(filterName, '');
     }
   };
-console.log('searchParams',searchParams)
+  console.log('searchParams', searchParams)
   return (
     <FormControl component="fieldset">
       {Object.keys(options).map((key) => (
-        <>
+        <Box key={key}>
           <FormLabel>
             <Typography textAlign="start" textTransform='capitalize' fontWeight={700}>
               {key}
@@ -41,7 +41,7 @@ console.log('searchParams',searchParams)
               />
             ))}
           </FormGroup>
-        </>
+        </Box>
       ))}
     </FormControl>
   );
