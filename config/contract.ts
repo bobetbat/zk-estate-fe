@@ -37,3 +37,51 @@ export const contracts: TContracts = {
     rent: '0x'//
   },
 }
+
+// getNumberOfProperties function config
+export const getNumberOfProperties = ({ owner }: TGetNumberOfProperties) => ({
+  address: CONTRACT_ADDRESS_MANTLE,
+  abi: [
+    {
+      name: 'getNumberOfProperties',
+      type: 'function',
+      stateMutability: 'nonpayable',
+      inputs: [
+        {
+          internalType: 'uint256',
+          name: '_landlord',
+          type: 'uint256'
+        },
+      ],
+      outputs: [],
+    },
+  ],
+  args: [owner],
+  enabled: Boolean(true),
+  functionName: 'getNumberOfProperties',
+})
+
+
+export interface TGetProperties {
+  pricePerMonth: BigInt;
+  collateral: BigInt;
+}
+
+export const addProperty = ({ pricePerMonth, collateral }: TGetProperties) => ({
+  address: CONTRACT_ADDRESS_MANTLE,
+  abi: [
+    {
+      name: 'addProperty',
+      type: 'function',
+      stateMutability: 'nonpayable',
+      inputs: [
+        { internalType: 'uint256', name: '_pricePerMonth', type: 'uint256' },
+        { internalType: 'uint256', name: '_collateral', type: 'uint256' },
+      ],
+      outputs: [],
+    },
+  ],
+  args: [pricePerMonth, collateral],
+  enabled: Boolean(true),
+  functionName: 'addProperty',
+})
