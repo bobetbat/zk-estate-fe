@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           <Typography variant="h3" textAlign='center'>Welcome to Web3 renting platform</Typography>
           <Stack mt='2rem' gap={1} direction='row' justifyContent='space-evenly'>
             <Button size='large' variant='contained' onClick={() => router.push('/search?location=Prague')}>Find home</Button>
-            <Button disabled size='large' variant='contained' onClick={() => router.push('/landlord')}>List apartment</Button>
+            <Button size='large' variant='contained' onClick={() => router.push('/landlord')}>List apartment</Button>
           </Stack>
         </Container>
       </Layout>

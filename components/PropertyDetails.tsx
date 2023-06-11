@@ -166,7 +166,7 @@ const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, config }) => {
               {propertyDetail.price.amount} {propertyDetail.price.currency} per{' '}
               {propertyDetail.price.period}
             </Typography>
-            <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}`)} config={config} title='Lock collateral' />
+            <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}?landlord=${router.query.landlord}`)} config={config} title='Lock collateral' />
           </Grid>
         </Grid>
       </Paper>

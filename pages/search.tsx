@@ -58,10 +58,11 @@ const Search: NextPage = () => {
               if (apartment.propertyId == '1' || apartment.propertyId == '2') return
               return <Grid item xs={12} md={6} pl={3} pt={3} key={apartment.propertyId}>
                 <SearchCard
+                  landlord={apartment.landlord}
                   title={JSON.parse(apartment.tokenURI ?? '').title}
                   description={JSON.parse(apartment.tokenURI ?? '').description}
                   imageUrls={JSON.parse(apartment.tokenURI ?? '').imageUrls}
-                  handleDetail={() => router.push(`/apartment/${apartment.propertyId}`)}
+                  handleDetail={() => router.push(`/apartment/${apartment.propertyId}?landlord=${apartment.landlord}`)}
                 />
               </Grid>
             })}
