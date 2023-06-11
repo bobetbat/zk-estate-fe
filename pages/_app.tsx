@@ -13,6 +13,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { chiadoGnosisTestnet, mantleTestnet, scrollAlfaTestnet, taikoTestnet } from '../config/chains';
 import { store } from '../store'
 import theme from '../styles/theme';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -44,20 +45,27 @@ const wagmiConfig = createConfig({
   webSocketPublicClient,
 });
 
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: 'https://api.studio.thegraph.com/query/45437/zkestate-rentalnft/v0.0.1',
+});
+
 const App = ({ Component, pageProps }: AppProps) => {
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider chains={chains}>
-            <Component {...pageProps} />
-          </RainbowKitProvider>
-        </WagmiConfig>
-      </ThemeProvider>
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <WagmiConfig config={wagmiConfig}>
+            <RainbowKitProvider chains={chains}>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </WagmiConfig>
+        </ThemeProvider>
+      </Provider>
+    </ApolloProvider>
   );
 }
 

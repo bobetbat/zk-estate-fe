@@ -53,9 +53,9 @@ export const apartments: Apartment[] = [
     location: 'Manhattan',
     price: 5000,
     imageUrls: [
-      '/logo.svg',
-      '/logo.svg',
-      '/logo.svg',
+      '/logo-dark.svg',
+      '/logo-dark.svg',
+      '/logo-dark.svg',
     ],
   },
   {
@@ -67,9 +67,9 @@ export const apartments: Apartment[] = [
     location: 'Brooklyn',
     price: 2000,
     imageUrls: [
-      '/logo.svg',
-      '/logo.svg',
-      '/logo.svg',
+      '/logo-dark.svg',
+      '/logo-dark.svg',
+      '/logo-dark.svg',
     ],
   },
 ];

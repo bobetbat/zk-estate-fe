@@ -24,7 +24,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, descriptio
         sx={{ position: 'relative',height: '15rem' }}
       >
         <Image
-          src={imageUrls[selectedImageIndex] ?? "/logo.svg"}
+          src={imageUrls[selectedImageIndex] ?? "/logo-dark.svg"}
           fill
           alt="logo"
         />
