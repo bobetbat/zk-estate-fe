@@ -22,7 +22,7 @@ export const GET_PROPERTY_LISTINGS_BY_LANDLORD = gql`
 
 export const GET_TENANT_PROPOSALS_BY_PROPERTY_ID = gql`
   query GetTenantProposalsByPropertyId($propertyId: BigInt!) {
-    TenantProposalSubmitteds(where: { propertyId: $propertyId }) {
+    tenantProposalSubmitteds(where: { propertyId: $propertyId }) {
       id
       propertyId
       tenant
