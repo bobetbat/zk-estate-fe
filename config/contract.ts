@@ -29,7 +29,7 @@ export const contracts: TContracts = {
   5001: {
     name: 'mantleTestnet',
     estate: '0x35aB012bb736e915407877F7489b0651406D825d',
-    rent: '0x'
+    rent: '0xDd9914408871fa9CDF5b6a3481c36a827f1D0010'
   },
   10200: {
     name: 'chiadoGnosisTestnet',
