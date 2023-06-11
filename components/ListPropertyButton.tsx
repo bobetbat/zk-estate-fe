@@ -17,7 +17,7 @@ export const ListPropertyButton: React.FC<{ config: any, title: string, callBack
   ] = useContractFunction(config);
 
   return (
-    <Container>
+    <Stack maxWidth={'6rem'} >
       <Stack mt='2rem' gap={1} direction='row' justifyContent='space-evenly'>
         <Button size='large' variant='contained' onClick={async () => {
           if (write) {
@@ -31,7 +31,7 @@ export const ListPropertyButton: React.FC<{ config: any, title: string, callBack
       <Typography variant="body1">{loading}</Typography>
       <Typography variant="body1">{error ?? ''}</Typography>
       <Typography variant="body1">{hash ?? 'no hash'}</Typography>
-    </Container>
+    </Stack>
   );
 }
 

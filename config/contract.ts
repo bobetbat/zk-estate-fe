@@ -177,3 +177,42 @@ export const submitTenantProposal = ({ address, propertyId, metadataURI }: TSubm
   enabled: Boolean(true),
   functionName: 'submitTenantProposal',
 })
+
+export interface TSelectWinner {
+  address: Hash;
+  propertyId: number;
+  tokenId: number;
+  tokenURI: string;
+}
+
+export const selectWinner = ({ address, propertyId, tokenId, tokenURI }: TSelectWinner) => ({
+  address: address,
+  abi: [
+    {
+      name: 'selectWinner',
+      type: 'function',
+      stateMutability: 'nonpayable',
+      inputs: [
+        {
+          "internalType": "uint256",
+          "name": "propertyId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "tokenURI",
+          "type": "string"
+        }
+      ],
+      outputs: [],
+    },
+  ],
+  args: [propertyId, tokenId, tokenURI],
+  enabled: Boolean(true),
+  functionName: 'selectWinner',
+})
