@@ -47,9 +47,9 @@ const Search: NextPage = () => {
         <Grid item xs={12}>
           <SearchBar onChange={handleSearchQueryChange} />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        {/* <Grid item xs={12} sm={6} md={3}>
           <FilterCheckboxes searchParams={router.query} onChange={handleFilterChange} options={filterOptions} />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} md={9}>
           <Grid container xs={12}>
             {loading && <>Loading...</>}
