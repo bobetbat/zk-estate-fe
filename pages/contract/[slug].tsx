@@ -10,13 +10,14 @@ import { ProgressBar } from '../../components/ProgressBar';
 import { useQuery } from '@apollo/client';
 import { GET_TENANT_PROPOSALS_BY_PROPERTY_ID } from '../../config/query';
 import { contracts, selectWinner } from '../../config/contract';
-import { useNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import { ListPropertyButton } from '../../components/ListPropertyButton';
 
 
 const Contract: React.FC = () => {
   const counter = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const { address, isConnecting, isDisconnected } = useAccount()
 
   const { chain } = useNetwork()
   const router = useRouter();
@@ -33,7 +34,7 @@ const Contract: React.FC = () => {
     dispatch(incrementByAmount(1))
   }
 
-  const handleApprove = (tenant:any) => {
+  const handleApprove = (tenant: any) => {
     // alert('Approved tenant')
     console.log('tenant', tenant)
     setTokenId(Number(tenant.proposalId))
@@ -42,7 +43,8 @@ const Contract: React.FC = () => {
 
 
   const config = selectWinner({ address: contracts[chain?.id ?? 420].rent, tokenId: tokenId, propertyId: propertyId, tokenURI: 'test' })
-  console.log('tokenId', tokenId)
+  console.log('address', address)
+  console.log('router.query.landlord', router.query.landlord)
   return (
     <Layout header footer>
       <Box sx={{ flexGrow: 1, padding: 2, }}>
@@ -51,8 +53,8 @@ const Contract: React.FC = () => {
           {(stage == '1' || stage == undefined) && <List>
             {(data && data.tenantProposalSubmitteds) ? data.tenantProposalSubmitteds.map((tenant: any) => <ListItem key={tenant.proposalId}>
               <ListItemText primary={tenant.tenant} />
-              {Number(tokenId) === Number(tenant.proposalId) ? <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}?stage=2`)} config={config} title='Approve' />
-                : <Button onClick={() => handleApprove(tenant)} variant='contained' color='primary'>Select</Button>}
+              {address?.toLocaleUpperCase() == String(router.query.landlord).toLocaleUpperCase() ? Number(tokenId) === Number(tenant.proposalId) ? <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}?stage=2`)} config={config} title='Approve' />
+                : <Button onClick={() => handleApprove(tenant)} variant='contained' color='primary'>Select</Button> : null}
             </ListItem>) : null}
           </List>}
         </Paper>

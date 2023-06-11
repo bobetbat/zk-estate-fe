@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import Image from 'next/image';
+import { Hash } from '../types';
 
 interface SearchCardProps {
   title: string;
   description: string;
+  landlord: Hash;
   imageUrls: string[];
   handleDetail: () => void;
 }
 
-const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, description, imageUrls }) => {
+const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, description, imageUrls, landlord }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const handleImageClick = () => {
@@ -21,7 +23,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, descriptio
     <Card>
       <CardMedia
         onClick={() => handleImageClick()}
-        sx={{ position: 'relative',height: '15rem' }}
+        sx={{ position: 'relative', height: '15rem' }}
       >
         <Image
           src={imageUrls[selectedImageIndex] ?? "/logo-dark.svg"}
