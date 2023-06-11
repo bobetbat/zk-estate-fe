@@ -33,7 +33,7 @@ const Contract: React.FC = () => {
     dispatch(incrementByAmount(1))
   }
 
-  const handleApprove = (tenant) => {
+  const handleApprove = (tenant:any) => {
     // alert('Approved tenant')
     console.log('tenant', tenant)
     setTokenId(Number(tenant.proposalId))
