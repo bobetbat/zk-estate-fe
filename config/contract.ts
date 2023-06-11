@@ -41,7 +41,6 @@ export const contracts: TContracts = {
     estate: '0xbefC6F3B404F2BF6B4c52E05c55BE15ee3Fe294d',
     rent: '0x8b88a4f6CD209301031333BC20334613430dff03'//
   },
-  
 }
 
 // getNumberOfProperties function config
@@ -90,4 +89,91 @@ export const addProperty = ({ pricePerMonth, collateral }: TGetProperties) => ({
   args: [pricePerMonth, collateral],
   enabled: Boolean(true),
   functionName: 'addProperty',
+})
+
+
+export interface TListProperties {
+  address: Hash;
+  startTime: number;
+  endTime: number;
+  tokenId: string;
+  tokenURI: any;
+}
+
+export const listProperty = ({ address, startTime, endTime, tokenId, tokenURI }: TListProperties) => ({
+  address: address,
+  abi: [
+    {
+      name: 'createPropertyListing',
+      type: 'function',
+      stateMutability: 'nonpayable',
+      inputs: [
+        {
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "tokenURI",
+          "type": "string"
+        }
+      ],
+      outputs: [{
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }],
+    },
+  ],
+  args: [startTime, endTime, tokenId, tokenURI],
+  enabled: Boolean(true),
+  functionName: 'createPropertyListing',
+})
+
+export interface TSubmitTenantProposal {
+  address: Hash;
+  propertyId: number;
+  metadataURI: string;
+}
+
+export const submitTenantProposal = ({ address, propertyId, metadataURI }: TSubmitTenantProposal) => ({
+  address: address,
+  abi: [
+    {
+      name: 'submitTenantProposal',
+      type: 'function',
+      stateMutability: 'nonpayable',
+      inputs: [
+        {
+          "internalType": "uint256",
+          "name": "propertyId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "metadataURI",
+          "type": "string"
+        }
+      ],
+      outputs: [{
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }],
+    },
+  ],
+  args: [propertyId, metadataURI],
+  enabled: Boolean(true),
+  functionName: 'submitTenantProposal',
 })

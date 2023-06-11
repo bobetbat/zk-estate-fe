@@ -8,13 +8,16 @@ import { Layout } from '../components/Layout';
 
 import { apartments, filterOptions } from '../config/mocks';
 import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/client';
+import { GET_LATEST_20_PROPERTY_LISTINGS } from '../config/query';
 
 
 
 const Search: NextPage = () => {
   const router = useRouter();
-  // console.log('search',searchParams)
-  console.log('router',router.query)
+  const { loading, error, data } = useQuery(GET_LATEST_20_PROPERTY_LISTINGS, {
+    variables: { first: 20, orderDirection: 'desc' },
+  });
 
   // const filteredApartments = useMemo(() => {
   //   return apartments.filter((apartment) =>
@@ -32,10 +35,7 @@ const Search: NextPage = () => {
     router.push(router);
   };
 
-  // const { loading, error, data } = useGraph(getItems);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error :(</p>;
+  console.log('data', data?.propertyListingCreateds[2].tokenURI) // json parse
   return (
     <Layout header footer>
       <Grid container spacing={2}>
@@ -52,6 +52,8 @@ const Search: NextPage = () => {
         </Grid>
         <Grid item xs={12} md={9}>
           <Grid container xs={12}>
+            {loading && <>Loading...</>}
+            {error && <>{`Error! ${error.message}`}</>}
             {apartments.map((apartment) => (
               <Grid item xs={12} md={6} pl={3} pt={3} key={apartment.id}>
                 <SearchCard

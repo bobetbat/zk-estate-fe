@@ -10,6 +10,7 @@ import {
   ImageListItem,
   Stack,
 } from '@mui/material';
+import { ListPropertyButton } from './ListPropertyButton';
 // import logo from "./../logo.svg";
 
 interface PropertyDetail {
@@ -47,7 +48,7 @@ interface PropertyDetail {
 
 interface Props {
   propertyDetail: PropertyDetail;
-  handleCollateralLock: () => void;
+  config: any;
 }
 
 const Image = styled('img')({
@@ -61,7 +62,7 @@ const AmenitiesWrapper = styled('div')({
   alignItems: 'flex-start',
 });
 
-const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, handleCollateralLock }) => {
+const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, config }) => {
   const [imageIndex, setImageIndex] = useState(0);
   console.log(propertyDetail)
   const handleNextImage = () => {
@@ -163,7 +164,7 @@ const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, handleCollateralL
               {propertyDetail.price.amount} {propertyDetail.price.currency} per{' '}
               {propertyDetail.price.period}
             </Typography>
-            <Button onClick={() => { alert(`Collateral locked ${propertyDetail.price.amount}`); handleCollateralLock() }} variant='contained' color='primary'>Lock Collateral</Button>
+            <ListPropertyButton config={config} title='Lock collateral' />
           </Grid>
         </Grid>
       </Paper>
