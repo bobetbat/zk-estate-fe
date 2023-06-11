@@ -11,6 +11,7 @@ import {
   Stack,
 } from '@mui/material';
 import { ListPropertyButton } from './ListPropertyButton';
+import { useRouter } from 'next/router';
 // import logo from "./../logo.svg";
 
 interface PropertyDetail {
@@ -63,6 +64,7 @@ const AmenitiesWrapper = styled('div')({
 });
 
 const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, config }) => {
+  const router = useRouter();
   const [imageIndex, setImageIndex] = useState(0);
   console.log(propertyDetail)
   const handleNextImage = () => {
@@ -164,7 +166,7 @@ const PropertyDetailPage: React.FC<Props> = ({ propertyDetail, config }) => {
               {propertyDetail.price.amount} {propertyDetail.price.currency} per{' '}
               {propertyDetail.price.period}
             </Typography>
-            <ListPropertyButton config={config} title='Lock collateral' />
+            <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}`)} config={config} title='Lock collateral' />
           </Grid>
         </Grid>
       </Paper>

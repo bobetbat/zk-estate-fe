@@ -35,7 +35,7 @@ const Search: NextPage = () => {
     router.push(router);
   };
 
-  console.log('data', data?.propertyListingCreateds[2].tokenURI) // json parse
+  console.log('data', data?.propertyListingCreateds) // json parse
   return (
     <Layout header footer>
       <Grid container spacing={2}>
@@ -54,16 +54,17 @@ const Search: NextPage = () => {
           <Grid container xs={12}>
             {loading && <>Loading...</>}
             {error && <>{`Error! ${error.message}`}</>}
-            {apartments.map((apartment) => (
-              <Grid item xs={12} md={6} pl={3} pt={3} key={apartment.id}>
+            {data?.propertyListingCreateds.map((apartment: any) => {
+              if (apartment.propertyId == '1' || apartment.propertyId == '2') return
+              return <Grid item xs={12} md={6} pl={3} pt={3} key={apartment.propertyId}>
                 <SearchCard
-                  title={apartment.title}
-                  description={apartment.description}
-                  imageUrls={apartment.imageUrls}
-                  handleDetail={() => router.push(`/apartment/${apartment.contract.address}`)}
+                  title={JSON.parse(apartment.tokenURI ?? '').title}
+                  description={JSON.parse(apartment.tokenURI ?? '').description}
+                  imageUrls={JSON.parse(apartment.tokenURI ?? '').imageUrls}
+                  handleDetail={() => router.push(`/apartment/${apartment.propertyId}`)}
                 />
               </Grid>
-            ))}
+            })}
           </Grid>
         </Grid>
       </Grid>
