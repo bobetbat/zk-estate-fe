@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { arbitrum, goerli, mainnet, optimism, polygon } from 'wagmi/chains';
+import { arbitrum, goerli, mainnet, optimism, polygon, optimismGoerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 import { chiadoGnosisTestnet, mantleTestnet, scrollAlfaTestnet } from '../config/chains';
@@ -16,14 +16,15 @@ import theme from '../styles/theme';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
-    goerli,
+    // goerli,
     mantleTestnet,
     scrollAlfaTestnet,
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
+    optimismGoerli,
     chiadoGnosisTestnet,
+    // mainnet,
+    // polygon,
+    // optimism,
+    // arbitrum,
     // ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [publicProvider()]

@@ -50,6 +50,7 @@ export const mantleTestnet: Chain = {
     }
   }
 }
+
 export const scrollAlfaTestnet: Chain = {
   id: 534353,
   name: 'Scroll Alfa Testnet',
@@ -75,4 +76,27 @@ export const scrollAlfaTestnet: Chain = {
   }
 }
 
-
+// export const OptimismTestnet: Chain = {
+//   id: 420,
+//   name: 'Optimism Testnet',
+//   network: '',
+//   nativeCurrency: {
+//     name: 'ETH',
+//     symbol: 'ETH',
+//     decimals: 18
+//   },
+//   rpcUrls: {
+//     default: {
+//       http: ['https://goerli.optimism.io']
+//     },
+//     public: {
+//       http: ['https://goerli.optimism.io']
+//     }
+//   },
+//   blockExplorers: {
+//     default: {
+//       name: 'blockscout',
+//       url: 'https://blockscout.scroll.io/'
+//     }
+//   }
+// }
