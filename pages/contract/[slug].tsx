@@ -11,7 +11,8 @@ import { useQuery } from '@apollo/client';
 import { GET_TENANT_PROPOSALS_BY_PROPERTY_ID } from '../../config/query';
 import { contracts, selectWinner } from '../../config/contract';
 import { useAccount, useNetwork } from 'wagmi';
-import { ListPropertyButton } from '../../components/ListPropertyButton';
+import { ActionButton } from '../../components/ActionButton';
+import { short } from '../../utils/string';
 
 
 const Contract: React.FC = () => {
@@ -52,8 +53,8 @@ const Contract: React.FC = () => {
         <Paper sx={{ p: 2, marginTop: 4 }}>
           {(stage == '1' || stage == undefined) && <List>
             {(data && data.tenantProposalSubmitteds) ? data.tenantProposalSubmitteds.map((tenant: any) => <ListItem key={tenant.proposalId}>
-              <ListItemText primary={tenant.tenant} />
-              {address?.toLocaleUpperCase() == String(router.query.landlord).toLocaleUpperCase() ? Number(tokenId) === Number(tenant.proposalId) ? <ListPropertyButton callBack={() => router.push(`/contract/${router.query.slug}?stage=2`)} config={config} title='Approve' />
+              <ListItemText primary={short(tenant.tenant)} />
+              {address?.toLocaleUpperCase() == String(router.query.landlord).toLocaleUpperCase() ? Number(tokenId) === Number(tenant.proposalId) ? <ActionButton callBack={() => router.push(`/contract/${router.query.slug}?stage=2`)} config={config} title='Approve' />
                 : <Button onClick={() => handleApprove(tenant)} variant='contained' color='primary'>Select</Button> : null}
             </ListItem>) : null}
           </List>}

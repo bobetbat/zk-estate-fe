@@ -7,7 +7,7 @@ import { Hash } from '../types';
 interface SearchCardProps {
   title: string;
   description: string;
-  landlord: Hash;
+  landlord?: Hash;
   imageUrls: string[];
   handleDetail: () => void;
 }
@@ -23,10 +23,10 @@ const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, descriptio
     <Card>
       <CardMedia
         onClick={() => handleImageClick()}
-        sx={{ position: 'relative', height: '15rem' }}
+        sx={{ position: 'relative', height: '20rem' }}
       >
         <Image
-          src={imageUrls[selectedImageIndex] ?? "/logo-dark.svg"}
+          src={"/images/"+imageUrls[selectedImageIndex] ?? "/logo-dark.svg"}
           fill
           alt="logo"
         />
@@ -35,10 +35,13 @@ const SearchCard: React.FC<SearchCardProps> = ({ handleDetail, title, descriptio
         <Typography sx={{
           overflow: 'hidden',
           whiteSpace: 'nowrap'
-        }} textOverflow='ellipsis' variant="h5" component="h2">
+        }} textOverflow='ellipsis' variant="h6" component="h6">
           {title}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography sx={{
+          overflow: 'hidden',
+          whiteSpace: 'nowrap'
+        }} textOverflow='ellipsis' variant="body2" component="p">
           {description}
         </Typography>
       </CardContent>

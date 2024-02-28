@@ -33,7 +33,7 @@ export const GET_TENANT_PROPOSALS_BY_PROPERTY_ID = gql`
 
 export const GET_TENANT_PROPOSALS_BY_TENANT = gql`
   query GetTenantProposalsByTenant($tenant: Bytes!) {
-    TenantProposalSubmitteds(where: { tenant: $tenant }) {
+    tenantProposalSubmitteds(where: { tenant: $tenant }) {
       id
       propertyId
       tenant

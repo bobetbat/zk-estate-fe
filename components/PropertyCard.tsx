@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { incrementByAmount } from '../store/reducers/counter';
 import { contracts, listProperty } from '../config/contract';
-import { ListPropertyButton } from './ListPropertyButton';
+import { ActionButton } from './ActionButton';
 import { useNetwork } from 'wagmi'
 
 export const PropertyCard: React.FC = () => {
@@ -41,7 +41,7 @@ export const PropertyCard: React.FC = () => {
     ],
   }) 
   const tokenId = '3'
-  const config = listProperty({ address: contracts[chain?.id ?? 420].rent, startTime, endTime, tokenId, tokenURI })
+  const config = listProperty({ address: contracts[chain?.id ?? 420]?.rent, startTime, endTime, tokenId, tokenURI })
 
   return (
     <Card>
@@ -54,7 +54,7 @@ export const PropertyCard: React.FC = () => {
             {/* <TextField id="outlined-basic" label="Address" variant="outlined" />
             <TextField id="outlined-basic" label="Address" variant="outlined" /> */}
             {/* <Button onClick={handleClick} variant='contained' color='primary'> click me </Button> */}
-            <ListPropertyButton config={config} title='List property' />
+            <ActionButton config={config} title='List property' />
           </Stack>
         </Stack>
       </CardContent>
